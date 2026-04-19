@@ -17,7 +17,7 @@ It is especially useful for **exploring AI models**, **CLI tool development**, a
 deepseek-chat-cli/
 │
 ├── main.py                 # Main CLI application
-├── 
+├── LICENSE
 └── README.md               # Project documentation
 ```
 
