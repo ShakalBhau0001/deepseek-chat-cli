@@ -16,6 +16,7 @@ It is especially useful for **exploring AI models**, **CLI tool development**, a
 ```bash
 deepseek-chat-cli/
 │
+├── assets/                 # Screenshots
 ├── main.py                 # Main CLI application
 ├── LICENSE
 └── README.md               # Project documentation
