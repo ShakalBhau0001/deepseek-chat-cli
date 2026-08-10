@@ -18,6 +18,7 @@ deepseek-chat-cli/
 │
 ├── assets/                 # Screenshots
 ├── main.py                 # Main CLI application
+├── requirements.txt        # Python dependencies
 ├── LICENSE
 └── README.md               # Project documentation
 ```
@@ -27,16 +28,19 @@ deepseek-chat-cli/
 ## ✨ Features
 
 ### 🤖 Multi-Model Support
+
 - Choose from **18 DeepSeek AI models**
 - Includes DeepSeek-V1 through V3, R1, Prover, Coder, and more
 - Interactive model selection table at startup
 
 ### 💬 Real-Time Chat Interface
+
 - Send messages and receive AI responses in real time
 - Tracks query count per session
 - Type `exit`, `quit`, or `bye` to end the session
 
 ### 🎨 Rich Terminal UI
+
 - Colorful and interactive interface powered by `rich`
 - Animated loading spinners while AI is thinking
 - Styled panels for responses
@@ -52,20 +56,6 @@ deepseek-chat-cli/
 | **pycryptodome** | AES cookie decryption for session auth |
 | **rich** | Beautiful terminal UI |
 | **regex (re)** | HTML response parsing |
-
----
-
-## 📌 Requirements
-
-```bash
-Python 3.7+
-```
-
-Install required libraries:
-
-```bash
-pip install requests pycryptodome rich
-```
 
 ---
 
@@ -86,6 +76,12 @@ cd deepseek-chat-cli
 ### 3️⃣ Install dependencies
 
 ```bash
+pip install -r requirements.txt
+```
+
+**OR**
+
+```bash
 pip install requests pycryptodome rich
 ```
 
@@ -101,7 +97,7 @@ python main.py
 
 After running the program, you will see a model selection table:
 
-```
+```text
 ╔═════╦═══════════════════════════════════╦══════════╗
 ║  №  ║  🤖 Model Name                   ║  Status  ║
 ╠═════╬═══════════════════════════════════╬══════════╣
@@ -114,12 +110,14 @@ After running the program, you will see a model selection table:
 ## 💬 Chat Example
 
 **Input:**
-```
+
+```text
 📝 You: What is Python?
 ```
 
 **Output:**
-```
+
+```text
 🤖 DeepSeek-V3 Response:
 Python is a high-level, interpreted programming language known for...
 ```
@@ -129,14 +127,17 @@ Python is a high-level, interpreted programming language known for...
 ## ⚙️ How It Works
 
 ### 1️⃣ Session Initialization
+
 - A `requests.Session` is created with a browser-like User-Agent
 - The tool connects to the proxy server and solves an **AES-based cookie challenge** to authenticate the session
 
 ### 2️⃣ Model Selection
+
 - User picks a model from the list
 - Selected model is passed with each request to the backend
 
 ### 3️⃣ Chat Loop
+
 - User message is sent via HTTP POST to the proxy
 - Response HTML is parsed using regex to extract the AI reply
 - Reply is displayed in a styled terminal panel
@@ -176,7 +177,20 @@ Python is a high-level, interpreted programming language known for...
 
 ---
 
-#### 🪪 Author
+## 📸 Preview
+
+### 1. Interactive UI
+![CLI Preview](assets/DC-1.png)
+
+### 2. Model Selection & Model Response
+![CLI Preview](assets/DC-2.png)
+
+### 3. Exit
+![CLI Preview](assets/DC-3.png)
+
+---
+
+## 🪪 Author
 
 > **Creator: Shakal Bhau**
 
