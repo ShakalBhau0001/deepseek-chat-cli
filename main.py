@@ -1,14 +1,15 @@
-import requests
 import re
+import sys
 import time
+
+import requests
 from Crypto.Cipher import AES
-from rich import print
+from rich import box, print
+from rich.align import Align
+from rich.console import Console
 from rich.panel import Panel
 from rich.prompt import Prompt
-from rich.console import Console
 from rich.table import Table
-from rich import box
-from rich.align import Align
 from rich.text import Text
 
 console = Console()
@@ -55,7 +56,6 @@ print(
     )
 )
 
-
 print("\n[bold yellow]═══════════════════════════════════════[/bold yellow]")
 print("[bold bright_white]       📋 CHOOSE YOUR AI MODEL        [/bold bright_white]")
 print("[bold yellow]═══════════════════════════════════════[/bold yellow]\n")
@@ -95,7 +95,6 @@ print(
     f"\n[bold green]✅ Selected Model:[/bold green] [black on bright_cyan] {model} [/black on bright_cyan]\n"
 )
 
-
 print(
     Panel.fit(
         "[bold yellow]⚙️  Initializing AI Session...[/bold yellow]",
@@ -115,7 +114,6 @@ with console.status("[bold bright_yellow]🔄 Loading AI Engine...", spinner="do
         r = s.get("https://asmodeus.free.nf/")
         nums = re.findall(r'toNumbers\("([a-f0-9]+)"\)', r.text)
         key, iv, data = [bytes.fromhex(n) for n in nums[:3]]
-
         s.cookies.set(
             "__test",
             AES.new(key, AES.MODE_CBC, iv).decrypt(data).hex(),
@@ -129,7 +127,7 @@ with console.status("[bold bright_yellow]🔄 Loading AI Engine...", spinner="do
         )
     except Exception as e:
         print(f"\n[bold red]❌ Error: {e}[/bold red]")
-        exit()
+        sys.exit()
 
 print(
     Panel.fit(
@@ -143,7 +141,6 @@ message_count = 0
 
 while True:
     msg = Prompt.ask("\n[bold bright_cyan]📝 You[/bold bright_cyan]").strip()
-
     if msg.lower() in ["exit", "quit", "bye"]:
         print(
             Panel.fit(
@@ -179,7 +176,7 @@ while True:
             )
 
         except Exception as e:
-            response_text = f"❌ Error: {str(e)}"
+            response_text = f"❌ Error: {e!s}"
 
     print(f"\n[bold bright_magenta]🤖 {model} Response:[/bold bright_magenta]")
     print(
